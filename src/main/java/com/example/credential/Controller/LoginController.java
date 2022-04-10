@@ -13,12 +13,13 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @PostMapping("/Login")
+    @PostMapping("/login")
     public String chackAuth(@RequestBody RegistrationModel registrationModel){return loginService.checkAuth(registrationModel)==null ? "Invalid" : "Valid";}
 
-    @GetMapping("/UserDetail")
+    @GetMapping("/userdetail")
     public UserProfile GetDetail(@RequestParam String emailId){return loginService.getUserDetail(emailId);}
 
-    @PutMapping("/ChangePassword/{EmailId}")
+    @PutMapping("/changepassword/{EmailId}")
     public String ChangePassword(@PathVariable String EmailId,@RequestParam String NewPassword){ return loginService.changePassword(EmailId, NewPassword) ? "Password has been Changed..." : "Password has not been Changed"; }
+
 }
