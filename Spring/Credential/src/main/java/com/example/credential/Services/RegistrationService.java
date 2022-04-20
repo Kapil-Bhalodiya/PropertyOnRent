@@ -64,14 +64,15 @@ public class RegistrationService {
     }
 
     public ResponseEntity<Response> updateUser(int id, RegistrationModel regBodyObj){
-        RegistrationModel registerObj = registrationRepo.findById(id).get();
-        if(registerObj==null) return ResponseEntity.badRequest().body(new Response(false, "Not Found..!" ));
+        RegistrationModel registerObj = registrationRepo.findById(id).orElse(null);
+        System.out.println("Value : " +registerObj);
+        if(registerObj == null) return ResponseEntity.badRequest().body(new Response(false, "Not Found..!" ));
         else {
             registerObj.setCityModel(regBodyObj.getCityModel());
             registerObj.setContactNumber(regBodyObj.getContactNumber());
             registerObj.setEmailId(regBodyObj.getEmailId());
             registerObj.setFirstName(regBodyObj.getFirstName());
-            registerObj.setPassword(passwordEncoder.encode(RegObj.getPassword()));
+            registerObj.setPassword(passwordEncoder.encode(registerObj.getPassword()));
             registerObj.setLastName(regBodyObj.getLastName());
             registerObj.setPincode(regBodyObj.getPincode());
             registrationRepo.save(registerObj);

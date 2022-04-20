@@ -54,7 +54,7 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
                 .cors().disable()
                 .csrf().disable()// kind of attack
                 //don't authenticate this particular request.
-                .authorizeRequests().antMatchers("/registration/saveuser","/registration/otpcode/**","/login/authentication").permitAll()
+                .authorizeRequests().antMatchers("/registration/**","/registration/otpcode/**","/login/authentication").permitAll()
                 //all other requests need to be authenticate
                 .antMatchers("/login/userRole","/login/userprofile/**").hasRole("User")
                 .antMatchers("/login/adminRole","/login/userprofile/**").hasRole("Admin")
