@@ -56,8 +56,8 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
                 //don't authenticate this particular request.
                 .authorizeRequests().antMatchers("/registration/saveuser","/registration/otpcode/**","/login/authentication").permitAll()
                 //all other requests need to be authenticate
-                .antMatchers("/login/userRole").hasRole("User")
-                .antMatchers("/login/adminRole").hasRole("Admin")
+                .antMatchers("/login/userRole","/login/userprofile/**").hasRole("User")
+                .antMatchers("/login/adminRole","/login/userprofile/**").hasRole("Admin")
                 .anyRequest().authenticated().and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); //it's remain same when change state
 

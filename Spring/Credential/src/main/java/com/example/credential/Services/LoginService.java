@@ -7,6 +7,7 @@ import com.example.credential.Model.UserProfile;
 import com.example.credential.Model.UserResponse;
 import com.example.credential.Repo.RegistrationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -38,17 +39,21 @@ public class LoginService {
 
     public RegistrationModel checkAuth(RegistrationModel registrationModel){ return registrationRepo.findByEmailIdAndPassword(registrationModel.getEmailId(),registrationModel.getPassword()); }
 
-    public UserProfile getUserDetail(String emailId){
-        System.out.println(emailId);
-        RegistrationModel registrationModel = registrationRepo.findByEmailId(emailId);
-        userProfile.setEmailId(registrationModel.getEmailId());
-        userProfile.setFirstName(registrationModel.getFirstName());
-        userProfile.setLastName(registrationModel.getLastName());
-        userProfile.setContactNumber(registrationModel.getContactNumber());
-        userProfile.setCityName(registrationModel.getCityModel().getCity_name());
-        userProfile.setPincode(registrationModel.getPincode());
-        userProfile.setStateName(registrationModel.getCityModel().getStateModel().getState_name());
-        return userProfile;
+    public ResponseEntity<UserProfile> getUserDetail(String emailId){
+        try {
+            RegistrationModel registrationModel = registrationRepo.findByEmailId(emailId);
+            userProfile.setEmailId(registrationModel.getEmailId());
+            userProfile.setFirstName(registrationModel.getFirstName());
+            userProfile.setLastName(registrationModel.getLastName());
+            userProfile.setContactNumber(registrationModel.getContactNumber());
+            userProfile.setCityName(registrationModel.getCityModel().getCity_name());
+            userProfile.setPincode(registrationModel.getPincode());
+            userProfile.setStateName(registrationModel.getCityModel().getStateModel().getState_name());
+            return ResponseEntity.status(HttpStatus.OK).body(userProfile);
+        }catch (Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+
     }
 
     public ResponseEntity<UserResponse> tokenSet(RegistrationModel reg) throws Exception {

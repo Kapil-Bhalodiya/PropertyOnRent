@@ -45,7 +45,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             System.out.println("Once we get the token validate it.");
             System.out.println(username);
             UserDetails userDetails = this.jwtUserDetailsService.loadUserByUsername(username);
-
             // if token is valid configure Spring Security to manually set
             // authentication
             if (jwtTokenUtil.validateToken(requestTokenHeader, userDetails.getUsername())) {
