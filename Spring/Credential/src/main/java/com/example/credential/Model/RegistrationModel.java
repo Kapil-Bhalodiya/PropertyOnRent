@@ -11,12 +11,24 @@ public class RegistrationModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private int registrationId;
+
+    @Column(nullable = false)
     private String firstName;
+
+    @Column(nullable = false)
     private String lastName;
+
+    @Column(nullable = false)
     private String emailId;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
     private String contactNumber;
+
     private int pincode;
 
     @ManyToOne

@@ -13,7 +13,7 @@ public class JwtUtill {
 
     private String secret = "123456";
 
-    public static final long JWT_TOKEN_VALIDITY = 5;
+    public static final long JWT_TOKEN_VALIDITY = 1800000;
 
     public String getUsernameFromToken(String token){ return getClaims(token).getSubject(); }
 

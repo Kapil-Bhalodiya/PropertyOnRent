@@ -13,8 +13,6 @@ import java.util.Random;
 
 @Service
 public class GenerateOTP {
-    @Autowired
-    private RegistrationRepo repo;
 
     @Autowired
     private JavaMailSender mailSender;

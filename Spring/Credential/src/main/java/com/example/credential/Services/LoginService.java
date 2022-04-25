@@ -3,6 +3,7 @@ package com.example.credential.Services;
 import com.example.credential.Config.CustomUserdetail;
 import com.example.credential.Config.JwtUtill;
 import com.example.credential.Model.RegistrationModel;
+import com.example.credential.Model.ResponseData;
 import com.example.credential.Model.UserProfile;
 import com.example.credential.Model.UserResponse;
 import com.example.credential.Repo.RegistrationRepo;
@@ -60,20 +61,36 @@ public class LoginService {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(reg.getEmailId(), reg.getPassword()));
         }catch (BadCredentialsException e) {
-            throw new Exception("INVALID_CREDENTIALS", e);
+            throw new Exception("INVALID CREDENTIALS", e);
         }
         customUserDetailService.loadUserByUsername(reg.getEmailId());
         String token = jwtUtill.doGenerateToken(reg.getEmailId());
-        return ResponseEntity.ok(new UserResponse(token, reg.getEmailId()));
+        return token.equals(null) ? ResponseEntity.status(HttpStatus.UNAUTHORIZED).build() : ResponseEntity.ok(new UserResponse(token, reg.getEmailId()));
     }
 
-    public Boolean changePassword(String emailId,String Password){
+    public ResponseEntity<ResponseData> changePassword(String emailId, String Password){
         RegistrationModel registerObj = registrationRepo.findByEmailId(emailId);
-        if(registerObj==null) return false;
+        if(registerObj==null) return ResponseEntity.badRequest().body(new ResponseData(false, "EmaildId not Found..!" ));
         else {
             registerObj.setPassword(passwordEncoder.encode(Password));
             registrationRepo.save(registerObj);
-            return true;
+            return ResponseEntity.ok(new ResponseData(true, "Password has been Changed..!" ));
+        }
+    }
+
+    public ResponseEntity<ResponseData> updateUser(int registerationId, RegistrationModel regBodyObj){
+        RegistrationModel registerObj = registrationRepo.findById(registerationId).orElse(null);
+        if(registerObj == null) return ResponseEntity.badRequest().body(new ResponseData(false, "Not Found..!" ));
+        else {
+            registerObj.setCityModel(regBodyObj.getCityModel());
+            registerObj.setContactNumber(regBodyObj.getContactNumber());
+            registerObj.setEmailId(regBodyObj.getEmailId());
+            registerObj.setFirstName(regBodyObj.getFirstName());
+            registerObj.setPassword(passwordEncoder.encode(registerObj.getPassword()));
+            registerObj.setLastName(regBodyObj.getLastName());
+            registerObj.setPincode(regBodyObj.getPincode());
+            registrationRepo.save(registerObj);
+            return ResponseEntity.ok().body(new ResponseData(true, "Updated..!" ));
         }
     }
 }

@@ -35,7 +35,7 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {  // which is use to configure conncection with authentication
         // configure authentication so that it knows from where to load.
         // user for matching credentials.
-        auth.userDetailsService(customUserdetail);
+        auth.userDetailsService(customUserdetail).passwordEncoder(encoder());
     }
 
     @Bean
@@ -56,8 +56,8 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
                 //don't authenticate this particular request.
                 .authorizeRequests().antMatchers("/registration/**","/registration/otpcode/**","/login/authentication").permitAll()
                 //all other requests need to be authenticate
-                .antMatchers("/login/userRole","/login/userprofile/**").hasRole("User")
-                .antMatchers("/login/adminRole","/login/userprofile/**").hasRole("Admin")
+                .antMatchers("/login/userRole","/login/changepassword/**").hasRole("User")
+                .antMatchers("/login/adminRole","/login/updateUser/**","/login/changepassword/**").hasRole("Admin")
                 .anyRequest().authenticated().and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); //it's remain same when change state
 
