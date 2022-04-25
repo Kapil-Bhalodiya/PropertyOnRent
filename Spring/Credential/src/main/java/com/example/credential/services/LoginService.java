@@ -1,12 +1,12 @@
-package com.example.credential.Services;
+package com.example.credential.services;
 
-import com.example.credential.Config.CustomUserdetail;
-import com.example.credential.Config.JwtUtill;
-import com.example.credential.Model.RegistrationModel;
-import com.example.credential.Model.ResponseData;
-import com.example.credential.Model.UserProfile;
-import com.example.credential.Model.UserResponse;
-import com.example.credential.Repo.RegistrationRepo;
+import com.example.credential.config.CustomUserdetail;
+import com.example.credential.config.JwtUtill;
+import com.example.credential.model.RegistrationModel;
+import com.example.credential.model.ResponseData;
+import com.example.credential.model.UserProfile;
+import com.example.credential.model.UserResponse;
+import com.example.credential.repo.RegistrationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +22,6 @@ public class LoginService {
 
     @Autowired
     RegistrationRepo registrationRepo;
-
-    @Autowired
-    UserProfile userProfile;
 
     @Autowired
     AuthenticationManager authenticationManager;
@@ -43,13 +40,14 @@ public class LoginService {
     public ResponseEntity<UserProfile> getUserDetail(String emailId){
         try {
             RegistrationModel registrationModel = registrationRepo.findByEmailId(emailId);
+            UserProfile userProfile = new UserProfile();
             userProfile.setEmailId(registrationModel.getEmailId());
             userProfile.setFirstName(registrationModel.getFirstName());
             userProfile.setLastName(registrationModel.getLastName());
             userProfile.setContactNumber(registrationModel.getContactNumber());
-            userProfile.setCityName(registrationModel.getCityModel().getCity_name());
+            userProfile.setCityName(registrationModel.getCityModel().getCityName());
             userProfile.setPincode(registrationModel.getPincode());
-            userProfile.setStateName(registrationModel.getCityModel().getStateModel().getState_name());
+            userProfile.setStateName(registrationModel.getCityModel().getStateModel().getStateName());
             return ResponseEntity.status(HttpStatus.OK).body(userProfile);
         }catch (Exception e){
             return ResponseEntity.badRequest().build();

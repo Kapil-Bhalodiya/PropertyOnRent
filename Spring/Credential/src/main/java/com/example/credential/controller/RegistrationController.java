@@ -1,8 +1,8 @@
-package com.example.credential.Controller;
+package com.example.credential.controller;
 
-import com.example.credential.Model.RegistrationModel;
-import com.example.credential.Model.ResponseData;
-import com.example.credential.Services.RegistrationService;
+import com.example.credential.model.RegistrationModel;
+import com.example.credential.model.ResponseData;
+import com.example.credential.services.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +23,10 @@ public class RegistrationController {
     }
 
     @PostMapping("/saveuser")
-    public ResponseEntity<ResponseData> saveData(@RequestBody RegistrationModel RegObj) throws MessagingException, UnsupportedEncodingException {
-        return registrationService.saveUser(RegObj) ;
+    public ResponseEntity<ResponseData> saveNewUser(@RequestBody RegistrationModel registrationModel) throws MessagingException, UnsupportedEncodingException {
+        return registrationService.saveUser(registrationModel) ;
     }
 
     @PostMapping("/otpcode/{otp}")   //Also use as a forgort password.
-    public ResponseEntity<ResponseData> getOtp(@PathVariable int otp){ return registrationService.checkOTP(otp); }
+    public ResponseEntity<ResponseData> checkOTP(@PathVariable int otp){ return registrationService.checkOTP(otp); }
 }

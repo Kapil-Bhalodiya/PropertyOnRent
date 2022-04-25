@@ -1,4 +1,4 @@
-package com.example.credential.Model;
+package com.example.credential.model;
 
 import lombok.Data;
 
@@ -11,8 +11,8 @@ public class CityModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int city_id;
-    private String city_name;
+    private int cityId;
+    private String cityName;
 
     @ManyToOne
     @JoinColumn(name = "state_id",referencedColumnName = "state_id")

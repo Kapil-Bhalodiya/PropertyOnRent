@@ -1,4 +1,4 @@
-package com.example.credential.Config;
+package com.example.credential.config;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;

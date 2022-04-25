@@ -1,6 +1,5 @@
-package com.example.credential.Services;
+package com.example.credential.services;
 
-import com.example.credential.Repo.RegistrationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;

@@ -1,4 +1,4 @@
-package com.example.credential.Model;
+package com.example.credential.model;
 
 
 import lombok.Data;
@@ -11,6 +11,6 @@ import javax.persistence.*;
 public class StateModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int state_id;
-    private String state_name;
+    private int stateId;
+    private String stateName;
 }

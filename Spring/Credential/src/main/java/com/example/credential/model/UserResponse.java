@@ -1,4 +1,4 @@
-package com.example.credential.Model;
+package com.example.credential.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,5 +7,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class UserResponse {
     private String token;
-    private String Emailid;
+    private String emailId;
 }

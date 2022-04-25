@@ -1,4 +1,4 @@
-package com.example.credential.Model;
+package com.example.credential.model;
 
 import lombok.Data;
 
