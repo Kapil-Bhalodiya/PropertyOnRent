@@ -17,32 +17,27 @@ public class CityController {
     CityService cityservice;
 
     @PostMapping("/Add")
-    public ResponseEntity<ResponseResult> AddCity(@RequestBody CityModel citymodel)
-    {
+    public ResponseEntity<ResponseResult> AddCity(@RequestBody CityModel citymodel) {
         return cityservice.SaveCity(citymodel);
     }
 
     @PutMapping("/Edit/{ID}")
-    public ResponseEntity<ResponseResult> UpdateCity(@PathVariable int ID, @RequestBody CityModel citymodel)
-    {
-        return cityservice.UpdateCity(ID,citymodel);
+    public ResponseEntity<ResponseResult> UpdateCity(@PathVariable int ID, @RequestBody CityModel citymodel) {
+        return cityservice.UpdateCity(ID, citymodel);
     }
 
     @GetMapping("/Get")
-    public ResponseEntity<List<CityModel>> GetAllCity()
-    {
+    public ResponseEntity<List<CityModel>> GetAllCity() {
         return cityservice.FindAllCity();
     }
 
     @DeleteMapping("/Delete/{ID}")
-    public ResponseEntity<ResponseResult> DeleteCity(@PathVariable int ID)
-    {
+    public ResponseEntity<ResponseResult> DeleteCity(@PathVariable int ID) {
         return cityservice.DeleteByIDCity(ID);
     }
 
     @GetMapping("/GetCityStatewise/{ID}")
-    public ResponseEntity<List<CityModel>> GetCityStatewise(@PathVariable int ID)
-    {
+    public ResponseEntity<List<CityModel>> GetCityStatewise(@PathVariable int ID) {
         return cityservice.FindCityStatewise(ID);
     }
 

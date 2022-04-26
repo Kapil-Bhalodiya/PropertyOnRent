@@ -21,11 +21,11 @@ public class RegistrationModel {
     private int pincode;
 
     @OneToOne
-    @JoinColumn(name = "role_id",referencedColumnName = "role_id")
+    @JoinColumn(name = "role_id", referencedColumnName = "role_id")
     private RoleModel roleModel;
 
 
     @OneToOne
-    @JoinColumn(name = "city_id",referencedColumnName = "city_id")
+    @JoinColumn(name = "city_id", referencedColumnName = "city_id")
     private CityModel cityModel;
 }

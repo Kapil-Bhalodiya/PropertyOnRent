@@ -15,6 +15,6 @@ public class SubAmenitiesModel {
     private String subamenities_name;
 
     @ManyToOne
-    @JoinColumn(name = "amenities_id",referencedColumnName = "amenities_id")
+    @JoinColumn(name = "amenities_id", referencedColumnName = "amenities_id")
     private AmenitiesModel amenitiesModel;
 }

@@ -18,26 +18,22 @@ public class PropertyTypeController {
     public PropertyTypeService propertytypeservice;
 
     @GetMapping("/Get")
-    public ResponseEntity<List<PropertyTypeModel>> GetAllPropertyType()
-    {
+    public ResponseEntity<List<PropertyTypeModel>> GetAllPropertyType() {
         return propertytypeservice.FindAllPropertyType();
     }
 
     @PostMapping("/Add")
-    public ResponseEntity<ResponseResult> AddPropertyType(@RequestBody PropertyTypeModel propertyTypeModel)
-    {
+    public ResponseEntity<ResponseResult> AddPropertyType(@RequestBody PropertyTypeModel propertyTypeModel) {
         return propertytypeservice.SavePropertyType(propertyTypeModel);
     }
 
     @PutMapping("/Edit/{ID}")
-    public ResponseEntity<ResponseResult> UpdatePropertyType(@PathVariable int ID, @RequestBody PropertyTypeModel propertyTypeModel)
-    {
-        return propertytypeservice.UpdatePropertyType(ID,propertyTypeModel);
+    public ResponseEntity<ResponseResult> UpdatePropertyType(@PathVariable int ID, @RequestBody PropertyTypeModel propertyTypeModel) {
+        return propertytypeservice.UpdatePropertyType(ID, propertyTypeModel);
     }
 
     @DeleteMapping("/Delete/{ID}")
-    public ResponseEntity<ResponseResult> DeletePropertyType(@PathVariable int ID)
-    {
+    public ResponseEntity<ResponseResult> DeletePropertyType(@PathVariable int ID) {
         return propertytypeservice.DeleteByIDPropertyType(ID);
     }
 }

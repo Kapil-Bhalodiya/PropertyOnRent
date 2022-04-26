@@ -20,70 +20,57 @@ public class SubAmenitiesService {
     @Autowired
     ResponseResult responseResult;
 
-    public ResponseEntity<List<SubAmenitiesModel>> FindAllSubAmenties()
-    {
-        try
-        {
-            List<SubAmenitiesModel> model=  subamenitiescrud.findAll();
-            responseResult = new ResponseResult(true,false,"All SubAmenities");
+    public ResponseEntity<List<SubAmenitiesModel>> FindAllSubAmenties() {
+        try {
+            List<SubAmenitiesModel> model = subamenitiescrud.findAll();
+            responseResult = new ResponseResult(true, false, "All SubAmenities");
             return ResponseEntity.status(HttpStatus.OK).body(model);
-        }catch(Exception e)
-        {
-            responseResult = new ResponseResult(false,true,"No Records Found!");
+        } catch (Exception e) {
+            responseResult = new ResponseResult(false, true, "No Records Found!");
             return ResponseEntity.notFound().build();
         }
     }
 
-    public ResponseEntity<List<SubAmenitiesModel>> FindSubAmenitieswise(int ID)
-    {
-        try
-        {
-            List<SubAmenitiesModel> model=  subamenitiescrud.FindSubAmenities_Ameneitieswise(ID);
-            responseResult = new ResponseResult(true,false,"All SubAmenities Amenitieswise");
+    public ResponseEntity<List<SubAmenitiesModel>> FindSubAmenitieswise(int ID) {
+        try {
+            List<SubAmenitiesModel> model = subamenitiescrud.FindSubAmenities_Ameneitieswise(ID);
+            responseResult = new ResponseResult(true, false, "All SubAmenities Amenitieswise");
             return ResponseEntity.status(HttpStatus.OK).body(model);
-        }catch(Exception e)
-        {
-            responseResult = new ResponseResult(false,true,"No Records Found!");
+        } catch (Exception e) {
+            responseResult = new ResponseResult(false, true, "No Records Found!");
             return ResponseEntity.notFound().build();
         }
     }
 
-    public ResponseEntity<ResponseResult> SaveSubAmenities(SubAmenitiesModel subAmenitiesModel)
-    {
-        try
-        {
+    public ResponseEntity<ResponseResult> SaveSubAmenities(SubAmenitiesModel subAmenitiesModel) {
+        try {
             subamenitiescrud.save(subAmenitiesModel);
-            responseResult = new ResponseResult(true,false,"SubAmenities Added!");
+            responseResult = new ResponseResult(true, false, "SubAmenities Added!");
             return ResponseEntity.status(HttpStatus.CREATED).body(responseResult);
-        } catch (Exception e)
-        {
-            responseResult = new ResponseResult(false,true,"SubAmenities Not Added!");
+        } catch (Exception e) {
+            responseResult = new ResponseResult(false, true, "SubAmenities Not Added!");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(responseResult);
         }
     }
 
-    public ResponseEntity<ResponseResult> UpdateSubAmenities(int ID,SubAmenitiesModel subAmenitiesModel)
-    {
-        if(subamenitiescrud.findById(ID).isPresent())
-        {
+    public ResponseEntity<ResponseResult> UpdateSubAmenities(int ID, SubAmenitiesModel subAmenitiesModel) {
+        if (subamenitiescrud.findById(ID).isPresent()) {
             subAmenitiesModel.setSubamenities_id(ID);
             subamenitiescrud.save(subAmenitiesModel);
-            responseResult = new ResponseResult(true,false,"SubAmenities Updated!");
+            responseResult = new ResponseResult(true, false, "SubAmenities Updated!");
             return ResponseEntity.ok(responseResult);
         }
-        responseResult = new ResponseResult(false,true,"This SubAmenities not exist!");
+        responseResult = new ResponseResult(false, true, "This SubAmenities not exist!");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseResult);
     }
 
-    public ResponseEntity<ResponseResult> DeleteByIDSubAmenities(int ID)
-    {
-        if(subamenitiescrud.findById(ID).isPresent())
-        {
+    public ResponseEntity<ResponseResult> DeleteByIDSubAmenities(int ID) {
+        if (subamenitiescrud.findById(ID).isPresent()) {
             subamenitiescrud.deleteById(ID);
-            responseResult = new ResponseResult(true,false,"SubAmenities Deleted!");
+            responseResult = new ResponseResult(true, false, "SubAmenities Deleted!");
             return ResponseEntity.ok(responseResult);
         }
-        responseResult = new ResponseResult(false,true,"This SubAmenities not exist!");
+        responseResult = new ResponseResult(false, true, "This SubAmenities not exist!");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseResult);
     }
 }

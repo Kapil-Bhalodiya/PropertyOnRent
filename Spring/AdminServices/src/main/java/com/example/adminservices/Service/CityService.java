@@ -20,69 +20,56 @@ public class CityService {
     @Autowired
     ResponseResult responseResult;
 
-    public ResponseEntity<ResponseResult> SaveCity(CityModel citymodel)
-    {
-        try
-        {
+    public ResponseEntity<ResponseResult> SaveCity(CityModel citymodel) {
+        try {
             citycrud.save(citymodel);
-            responseResult = new ResponseResult(true,false,"City Added!");
+            responseResult = new ResponseResult(true, false, "City Added!");
             return ResponseEntity.status(HttpStatus.CREATED).body(responseResult);
-        } catch (Exception e)
-        {
-            responseResult = new ResponseResult(false,true,"City Not Added!");
+        } catch (Exception e) {
+            responseResult = new ResponseResult(false, true, "City Not Added!");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(responseResult);
         }
     }
 
-    public ResponseEntity<ResponseResult> UpdateCity(int ID,CityModel cityModel)
-    {
-        if(citycrud.findById(ID).isPresent())
-        {
+    public ResponseEntity<ResponseResult> UpdateCity(int ID, CityModel cityModel) {
+        if (citycrud.findById(ID).isPresent()) {
             cityModel.setCity_id(ID);
             citycrud.save(cityModel);
-            responseResult = new ResponseResult(true,false,"City Updated!");
+            responseResult = new ResponseResult(true, false, "City Updated!");
             return ResponseEntity.ok(responseResult);
         }
-        responseResult = new ResponseResult(false,true,"This city not exist!");
+        responseResult = new ResponseResult(false, true, "This city not exist!");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseResult);
     }
 
-    public ResponseEntity<List<CityModel>> FindAllCity()
-    {
-        try
-        {
-            List<CityModel> model= citycrud.findAll();
-            responseResult = new ResponseResult(true,false,"All City");
+    public ResponseEntity<List<CityModel>> FindAllCity() {
+        try {
+            List<CityModel> model = citycrud.findAll();
+            responseResult = new ResponseResult(true, false, "All City");
             return ResponseEntity.status(HttpStatus.OK).body(model);
-        }catch(Exception e)
-        {
-            responseResult = new ResponseResult(false,true,"No Records Found!");
+        } catch (Exception e) {
+            responseResult = new ResponseResult(false, true, "No Records Found!");
             return ResponseEntity.notFound().build();
         }
     }
 
-    public ResponseEntity<ResponseResult> DeleteByIDCity(int ID)
-    {
-        if(citycrud.findById(ID).isPresent())
-        {
+    public ResponseEntity<ResponseResult> DeleteByIDCity(int ID) {
+        if (citycrud.findById(ID).isPresent()) {
             citycrud.deleteById(ID);
-            responseResult = new ResponseResult(true,false,"City Deleted!");
+            responseResult = new ResponseResult(true, false, "City Deleted!");
             return ResponseEntity.ok(responseResult);
         }
-        responseResult = new ResponseResult(false,true,"This city not exist!");
+        responseResult = new ResponseResult(false, true, "This city not exist!");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseResult);
     }
 
-    public ResponseEntity<List<CityModel>> FindCityStatewise(int ID)
-    {
-        try
-        {
-            List<CityModel> model= citycrud.FindCityStatewise(ID);
-            responseResult = new ResponseResult(true,false,"Statewise city");
+    public ResponseEntity<List<CityModel>> FindCityStatewise(int ID) {
+        try {
+            List<CityModel> model = citycrud.FindCityStatewise(ID);
+            responseResult = new ResponseResult(true, false, "Statewise city");
             return ResponseEntity.status(HttpStatus.OK).body(model);
-        }catch(Exception e)
-        {
-            responseResult = new ResponseResult(false,true,"No Records Found!");
+        } catch (Exception e) {
+            responseResult = new ResponseResult(false, true, "No Records Found!");
             return ResponseEntity.notFound().build();
         }
     }

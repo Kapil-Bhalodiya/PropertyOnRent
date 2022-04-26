@@ -17,26 +17,22 @@ public class RoleController {
     RoleService roleservice;
 
     @GetMapping("/Get")
-    public ResponseEntity<List<RoleModel>> GetAllRole()
-    {
+    public ResponseEntity<List<RoleModel>> GetAllRole() {
         return roleservice.FindAllRole();
     }
 
     @PostMapping("/Add")
-    public ResponseEntity<ResponseResult> AddRole(@RequestBody RoleModel rolemodel)
-    {
+    public ResponseEntity<ResponseResult> AddRole(@RequestBody RoleModel rolemodel) {
         return roleservice.AddRole(rolemodel);
     }
 
     @PutMapping("/Edit/{ID}")
-    public ResponseEntity<ResponseResult> UpdateRole(@PathVariable int ID, @RequestBody RoleModel rolemodel)
-    {
-        return roleservice.UpdateRole(ID,rolemodel);
+    public ResponseEntity<ResponseResult> UpdateRole(@PathVariable int ID, @RequestBody RoleModel rolemodel) {
+        return roleservice.UpdateRole(ID, rolemodel);
     }
 
     @DeleteMapping("/Delete/{ID}")
-    public ResponseEntity<ResponseResult> DeleteRole(@PathVariable int ID)
-    {
+    public ResponseEntity<ResponseResult> DeleteRole(@PathVariable int ID) {
         return roleservice.DeleteByIDRole(ID);
     }
 }

@@ -20,56 +20,46 @@ public class RoleService {
     @Autowired
     ResponseResult responseResult;
 
-    public ResponseEntity<List<RoleModel>> FindAllRole()
-    {
-        try
-        {
-            List<RoleModel> model= rolecrud.findAll();
-            responseResult = new ResponseResult(true,false,"All Roles");
+    public ResponseEntity<List<RoleModel>> FindAllRole() {
+        try {
+            List<RoleModel> model = rolecrud.findAll();
+            responseResult = new ResponseResult(true, false, "All Roles");
             return ResponseEntity.status(HttpStatus.OK).body(model);
-        }catch(Exception e)
-        {
-            responseResult = new ResponseResult(false,true,"No Records Found!");
+        } catch (Exception e) {
+            responseResult = new ResponseResult(false, true, "No Records Found!");
             return ResponseEntity.notFound().build();
         }
     }
 
-    public ResponseEntity<ResponseResult> AddRole(RoleModel rolemodel)
-    {
-        try
-        {
+    public ResponseEntity<ResponseResult> AddRole(RoleModel rolemodel) {
+        try {
             rolecrud.save(rolemodel);
-            responseResult = new ResponseResult(true,false,"Role Added!");
+            responseResult = new ResponseResult(true, false, "Role Added!");
             return ResponseEntity.status(HttpStatus.CREATED).body(responseResult);
-        } catch (Exception e)
-        {
-            responseResult = new ResponseResult(false,true,"Role Not Added!");
+        } catch (Exception e) {
+            responseResult = new ResponseResult(false, true, "Role Not Added!");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(responseResult);
         }
     }
 
-    public ResponseEntity<ResponseResult> UpdateRole(int ID, RoleModel rolemodel)
-    {
-        if(rolecrud.findById(ID).isPresent())
-        {
+    public ResponseEntity<ResponseResult> UpdateRole(int ID, RoleModel rolemodel) {
+        if (rolecrud.findById(ID).isPresent()) {
             rolemodel.setRole_id(ID);
             rolecrud.save(rolemodel);
-            responseResult = new ResponseResult(true,false,"Role Updated!");
+            responseResult = new ResponseResult(true, false, "Role Updated!");
             return ResponseEntity.ok(responseResult);
         }
-        responseResult = new ResponseResult(false,true,"This Role not exist!");
+        responseResult = new ResponseResult(false, true, "This Role not exist!");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseResult);
     }
 
-    public ResponseEntity<ResponseResult> DeleteByIDRole(int ID)
-    {
-        if(rolecrud.findById(ID).isPresent())
-        {
+    public ResponseEntity<ResponseResult> DeleteByIDRole(int ID) {
+        if (rolecrud.findById(ID).isPresent()) {
             rolecrud.deleteById(ID);
-            responseResult = new ResponseResult(true,false,"Role Deleted!");
+            responseResult = new ResponseResult(true, false, "Role Deleted!");
             return ResponseEntity.ok(responseResult);
         }
-        responseResult = new ResponseResult(false,true,"This Role not exist!");
+        responseResult = new ResponseResult(false, true, "This Role not exist!");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseResult);
     }
 }

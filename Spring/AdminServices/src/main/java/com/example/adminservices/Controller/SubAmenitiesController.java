@@ -17,32 +17,27 @@ public class SubAmenitiesController {
     SubAmenitiesService subAmenitiesService;
 
     @GetMapping("/Get")
-    public ResponseEntity<List<SubAmenitiesModel>> GetAllSubAmenities()
-    {
+    public ResponseEntity<List<SubAmenitiesModel>> GetAllSubAmenities() {
         return subAmenitiesService.FindAllSubAmenties();
     }
 
     @GetMapping("/Get/{ID}")
-    public ResponseEntity<List<SubAmenitiesModel>> GetSubAmenitieswise(@PathVariable int ID)
-    {
+    public ResponseEntity<List<SubAmenitiesModel>> GetSubAmenitieswise(@PathVariable int ID) {
         return subAmenitiesService.FindSubAmenitieswise(ID);
     }
 
     @PostMapping("/Add")
-    public ResponseEntity<ResponseResult> AddSubAmenities(@RequestBody SubAmenitiesModel subAmenitiesModel)
-    {
+    public ResponseEntity<ResponseResult> AddSubAmenities(@RequestBody SubAmenitiesModel subAmenitiesModel) {
         return subAmenitiesService.SaveSubAmenities(subAmenitiesModel);
     }
 
     @PutMapping("/Edit/{ID}")
-    public ResponseEntity<ResponseResult> UpdateSubAmenities(@PathVariable int ID, @RequestBody SubAmenitiesModel subAmenitiesModel)
-    {
-        return subAmenitiesService.UpdateSubAmenities(ID,subAmenitiesModel);
+    public ResponseEntity<ResponseResult> UpdateSubAmenities(@PathVariable int ID, @RequestBody SubAmenitiesModel subAmenitiesModel) {
+        return subAmenitiesService.UpdateSubAmenities(ID, subAmenitiesModel);
     }
 
     @DeleteMapping("Delete/{ID}")
-    public ResponseEntity<ResponseResult> DeleteSubAmenities(@PathVariable int ID)
-    {
+    public ResponseEntity<ResponseResult> DeleteSubAmenities(@PathVariable int ID) {
         return subAmenitiesService.DeleteByIDSubAmenities(ID);
     }
 

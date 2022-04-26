@@ -16,60 +16,51 @@ import java.util.Optional;
 public class PropertyTypeService {
 
     @Autowired
-    public  PropertyTypeCrud propertytypecrud;
+    public PropertyTypeCrud propertytypecrud;
 
     @Autowired
     ResponseResult responseResult;
 
-    public ResponseEntity<List<PropertyTypeModel>> FindAllPropertyType(){
-        try
-        {
-            List<PropertyTypeModel> model= propertytypecrud.findAll();
-            responseResult = new ResponseResult(true,false,"All Property");
+    public ResponseEntity<List<PropertyTypeModel>> FindAllPropertyType() {
+        try {
+            List<PropertyTypeModel> model = propertytypecrud.findAll();
+            responseResult = new ResponseResult(true, false, "All Property");
             return ResponseEntity.status(HttpStatus.OK).body(model);
-        }catch(Exception e)
-        {
-            responseResult = new ResponseResult(false,true,"No Records Found!");
+        } catch (Exception e) {
+            responseResult = new ResponseResult(false, true, "No Records Found!");
             return ResponseEntity.notFound().build();
         }
     }
 
-    public ResponseEntity<ResponseResult> SavePropertyType(PropertyTypeModel propertytypemodel)
-    {
-        try
-        {
+    public ResponseEntity<ResponseResult> SavePropertyType(PropertyTypeModel propertytypemodel) {
+        try {
             propertytypecrud.save(propertytypemodel);
-            responseResult = new ResponseResult(true,false,"Property Added!");
+            responseResult = new ResponseResult(true, false, "Property Added!");
             return ResponseEntity.status(HttpStatus.CREATED).body(responseResult);
-        } catch (Exception e)
-        {
-            responseResult = new ResponseResult(false,true,"Property Not Added!");
+        } catch (Exception e) {
+            responseResult = new ResponseResult(false, true, "Property Not Added!");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(responseResult);
         }
     }
 
-    public ResponseEntity<ResponseResult> UpdatePropertyType(int ID,PropertyTypeModel propertyTypeModel)
-    {
-        if(propertytypecrud.findById(ID).isPresent())
-        {
+    public ResponseEntity<ResponseResult> UpdatePropertyType(int ID, PropertyTypeModel propertyTypeModel) {
+        if (propertytypecrud.findById(ID).isPresent()) {
             propertyTypeModel.setPropertytype_id(ID);
             propertytypecrud.save(propertyTypeModel);
-            responseResult = new ResponseResult(true,false,"PropertyType Updated!");
+            responseResult = new ResponseResult(true, false, "PropertyType Updated!");
             return ResponseEntity.ok(responseResult);
         }
-        responseResult = new ResponseResult(false,true,"This PropertyType not exist!");
+        responseResult = new ResponseResult(false, true, "This PropertyType not exist!");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseResult);
     }
 
-    public ResponseEntity<ResponseResult> DeleteByIDPropertyType(int ID)
-    {
-        if(propertytypecrud.findById(ID).isPresent())
-        {
+    public ResponseEntity<ResponseResult> DeleteByIDPropertyType(int ID) {
+        if (propertytypecrud.findById(ID).isPresent()) {
             propertytypecrud.deleteById(ID);
-            responseResult = new ResponseResult(true,false,"PropertyType Deleted!");
+            responseResult = new ResponseResult(true, false, "PropertyType Deleted!");
             return ResponseEntity.ok(responseResult);
         }
-        responseResult = new ResponseResult(false,true,"This PropertyType not exist!");
+        responseResult = new ResponseResult(false, true, "This PropertyType not exist!");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseResult);
     }
 

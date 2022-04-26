@@ -32,10 +32,10 @@ public class RegistrationModel {
     private int pincode;
 
     @ManyToOne
-    @JoinColumn(name = "role_id")
+    @JoinColumn(name = "role_id",nullable = false)
     private RoleModel roleModel;
 
     @ManyToOne
-    @JoinColumn(name = "city_id")
+    @JoinColumn(name = "city_id",referencedColumnName = "cityId",nullable = false)
     private CityModel cityModel;
 }

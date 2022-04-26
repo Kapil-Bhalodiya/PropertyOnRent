@@ -17,26 +17,22 @@ public class EventsController {
     EventsService eventsservice;
 
     @GetMapping("/Get")
-    public ResponseEntity<List<EventsModel>> GetALlEvents()
-    {
+    public ResponseEntity<List<EventsModel>> GetALlEvents() {
         return eventsservice.FindALlEvents();
     }
 
     @PostMapping("/Add")
-    public ResponseEntity<ResponseResult> AddEvents(@RequestBody EventsModel eventsModel)
-    {
-        return  eventsservice.SaveEvents(eventsModel);
+    public ResponseEntity<ResponseResult> AddEvents(@RequestBody EventsModel eventsModel) {
+        return eventsservice.SaveEvents(eventsModel);
     }
 
     @PutMapping("/Edit/{ID}")
-    public ResponseEntity<ResponseResult> UpdateEvents(@PathVariable int ID, @RequestBody EventsModel eventsModel)
-    {
-        return eventsservice.UpdateEvents(ID,eventsModel);
+    public ResponseEntity<ResponseResult> UpdateEvents(@PathVariable int ID, @RequestBody EventsModel eventsModel) {
+        return eventsservice.UpdateEvents(ID, eventsModel);
     }
 
     @DeleteMapping("/Delete/{ID}")
-    public ResponseEntity<ResponseResult> DeleteEvents(@PathVariable int ID)
-    {
+    public ResponseEntity<ResponseResult> DeleteEvents(@PathVariable int ID) {
         return eventsservice.DeleteByIDEvents(ID);
     }
 }

@@ -18,15 +18,17 @@ public class RegistrationController {
     RegistrationService registrationService;
 
     @GetMapping("/getalluser")
-    public Iterable<RegistrationModel> getData(){
+    public Iterable<RegistrationModel> getData() {
         return registrationService.getAllUser();
     }
 
     @PostMapping("/saveuser")
     public ResponseEntity<ResponseData> saveNewUser(@RequestBody RegistrationModel registrationModel) throws MessagingException, UnsupportedEncodingException {
-        return registrationService.saveUser(registrationModel) ;
+        return registrationService.saveUser(registrationModel);
     }
 
     @PostMapping("/otpcode/{otp}")   //Also use as a forgort password.
-    public ResponseEntity<ResponseData> checkOTP(@PathVariable int otp){ return registrationService.checkOTP(otp); }
+    public ResponseEntity<ResponseData> checkOTP(@PathVariable int otp) {
+        return registrationService.checkOTP(otp);
+    }
 }

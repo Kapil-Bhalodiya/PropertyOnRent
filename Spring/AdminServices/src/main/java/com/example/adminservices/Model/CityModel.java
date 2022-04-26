@@ -1,6 +1,7 @@
 package com.example.adminservices.Model;
 
 import lombok.Data;
+
 import javax.persistence.*;
 
 @Data
@@ -14,6 +15,6 @@ public class CityModel {
     private String city_name;
 
     @ManyToOne
-    @JoinColumn(name = "state_id",referencedColumnName = "state_id")
+    @JoinColumn(name = "state_id", referencedColumnName = "state_id")
     private StateModel stateModel;
 }

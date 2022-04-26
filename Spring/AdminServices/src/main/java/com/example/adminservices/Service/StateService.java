@@ -22,51 +22,46 @@ public class StateService {
     ResponseResult responseResult;
 
     public ResponseEntity<ResponseResult> SaveState(StateModel statemodel) {
-        try
-        {
+        try {
             statecrud.save(statemodel);
-            responseResult = new ResponseResult(true,false,"State Added!");
+            responseResult = new ResponseResult(true, false, "State Added!");
             return ResponseEntity.status(HttpStatus.CREATED).body(responseResult);
-        } catch (Exception e)
-        {
-            responseResult = new ResponseResult(false,true,"This State not exist!");
+        } catch (Exception e) {
+            responseResult = new ResponseResult(false, true, "This State not exist!");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(responseResult);
         }
     }
 
-    public ResponseEntity<ResponseResult> UpdateState(int ID,StateModel statemodel)
-    {
-        if(statecrud.findById(ID).isPresent())
-        {
+    public ResponseEntity<ResponseResult> UpdateState(int ID, StateModel statemodel) {
+        if (statecrud.findById(ID).isPresent()) {
             statemodel.setState_id(ID);
             statecrud.save(statemodel);
-            responseResult = new ResponseResult(true,false,"State Updated!");
+            responseResult = new ResponseResult(true, false, "State Updated!");
             return ResponseEntity.ok(responseResult);
         }
-        responseResult = new ResponseResult(false,true,"This State not exist!");
+        responseResult = new ResponseResult(false, true, "This State not exist!");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseResult);
     }
 
     public ResponseEntity<List<StateModel>> FindAllState() {
-        try
-        {
-            List<StateModel> model= statecrud.findAll();
-            responseResult = new ResponseResult(true,false,"All State");
+        try {
+            List<StateModel> model = statecrud.findAll();
+            responseResult = new ResponseResult(true, false, "All State");
             return ResponseEntity.status(HttpStatus.OK).body(model);
-        }catch(Exception e)
-        {
-            responseResult = new ResponseResult(false,true,"No Records Found!");
+        } catch (Exception e) {
+            responseResult = new ResponseResult(false, true, "No Records Found!");
             return ResponseEntity.notFound().build();
         }
     }
+
     public ResponseEntity<ResponseResult> DeleteByIDState(int ID) {
 
-        if(statecrud.findById(ID).isPresent()) {
+        if (statecrud.findById(ID).isPresent()) {
             statecrud.deleteById(ID);
-            responseResult = new ResponseResult(true,false,"State Deleted!");
+            responseResult = new ResponseResult(true, false, "State Deleted!");
             return ResponseEntity.ok(responseResult);
         }
-        responseResult = new ResponseResult(false,true,"This State not exist!");
+        responseResult = new ResponseResult(false, true, "This State not exist!");
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseResult);
     }
 }

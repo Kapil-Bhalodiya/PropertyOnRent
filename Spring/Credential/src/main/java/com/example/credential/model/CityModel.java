@@ -15,6 +15,6 @@ public class CityModel {
     private String cityName;
 
     @ManyToOne
-    @JoinColumn(name = "state_id",referencedColumnName = "state_id")
+    @JoinColumn(name = "state_id", referencedColumnName = "stateId")
     private StateModel stateModel;
 }

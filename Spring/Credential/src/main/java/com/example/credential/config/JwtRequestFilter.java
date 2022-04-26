@@ -1,5 +1,6 @@
 package com.example.credential.config;
 
+import com.example.credential.services.CustomUserdetail;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -30,7 +31,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         final String requestTokenHeader = request.getHeader("Authorization");
         String username = null;
         // only the Token
-        if (requestTokenHeader != null ) {
+        if (requestTokenHeader != null) {
             try {
                 username = jwtTokenUtil.getUsernameFromToken(requestTokenHeader);
             } catch (IllegalArgumentException e) {

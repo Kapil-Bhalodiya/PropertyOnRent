@@ -1,6 +1,5 @@
 package com.example.credential.services;
 
-import com.example.credential.config.CustomUserdetail;
 import com.example.credential.config.JwtUtill;
 import com.example.credential.model.RegistrationModel;
 import com.example.credential.model.ResponseData;
@@ -35,9 +34,11 @@ public class LoginService {
     @Autowired
     JwtUtill jwtUtill;
 
-    public RegistrationModel checkAuth(RegistrationModel registrationModel){ return registrationRepo.findByEmailIdAndPassword(registrationModel.getEmailId(),registrationModel.getPassword()); }
+    public RegistrationModel checkAuth(RegistrationModel registrationModel) {
+        return registrationRepo.findByEmailIdAndPassword(registrationModel.getEmailId(), registrationModel.getPassword());
+    }
 
-    public ResponseEntity<UserProfile> getUserDetail(String emailId){
+    public ResponseEntity<UserProfile> getUserDetail(String emailId) {
         try {
             RegistrationModel registrationModel = registrationRepo.findByEmailId(emailId);
             UserProfile userProfile = new UserProfile();
@@ -49,7 +50,7 @@ public class LoginService {
             userProfile.setPincode(registrationModel.getPincode());
             userProfile.setStateName(registrationModel.getCityModel().getStateModel().getStateName());
             return ResponseEntity.status(HttpStatus.OK).body(userProfile);
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
 
@@ -58,7 +59,7 @@ public class LoginService {
     public ResponseEntity<UserResponse> tokenSet(RegistrationModel reg) throws Exception {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(reg.getEmailId(), reg.getPassword()));
-        }catch (BadCredentialsException e) {
+        } catch (BadCredentialsException e) {
             throw new Exception("INVALID CREDENTIALS", e);
         }
         customUserDetailService.loadUserByUsername(reg.getEmailId());
@@ -66,19 +67,20 @@ public class LoginService {
         return token.equals(null) ? ResponseEntity.status(HttpStatus.UNAUTHORIZED).build() : ResponseEntity.ok(new UserResponse(token, reg.getEmailId()));
     }
 
-    public ResponseEntity<ResponseData> changePassword(String emailId, String Password){
+    public ResponseEntity<ResponseData> changePassword(String emailId, String Password) {
         RegistrationModel registerObj = registrationRepo.findByEmailId(emailId);
-        if(registerObj==null) return ResponseEntity.badRequest().body(new ResponseData(false, "EmaildId not Found..!" ));
+        if (registerObj == null)
+            return ResponseEntity.badRequest().body(new ResponseData(false, "EmaildId not Found..!"));
         else {
             registerObj.setPassword(passwordEncoder.encode(Password));
             registrationRepo.save(registerObj);
-            return ResponseEntity.ok(new ResponseData(true, "Password has been Changed..!" ));
+            return ResponseEntity.ok(new ResponseData(true, "Password has been Changed..!"));
         }
     }
 
-    public ResponseEntity<ResponseData> updateUser(int registerationId, RegistrationModel regBodyObj){
+    public ResponseEntity<ResponseData> updateUser(int registerationId, RegistrationModel regBodyObj) {
         RegistrationModel registerObj = registrationRepo.findById(registerationId).orElse(null);
-        if(registerObj == null) return ResponseEntity.badRequest().body(new ResponseData(false, "Not Found..!" ));
+        if (registerObj == null) return ResponseEntity.badRequest().body(new ResponseData(false, "Not Found..!"));
         else {
             registerObj.setCityModel(regBodyObj.getCityModel());
             registerObj.setContactNumber(regBodyObj.getContactNumber());
@@ -88,7 +90,7 @@ public class LoginService {
             registerObj.setLastName(regBodyObj.getLastName());
             registerObj.setPincode(regBodyObj.getPincode());
             registrationRepo.save(registerObj);
-            return ResponseEntity.ok().body(new ResponseData(true, "Updated..!" ));
+            return ResponseEntity.ok().body(new ResponseData(true, "Updated..!"));
         }
     }
 }

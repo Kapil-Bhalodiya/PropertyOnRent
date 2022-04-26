@@ -1,6 +1,7 @@
 package com.example.adminservices.Model;
 
 import lombok.Data;
+
 import javax.persistence.*;
 
 @Data

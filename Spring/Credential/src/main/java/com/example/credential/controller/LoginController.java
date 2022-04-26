@@ -20,30 +20,43 @@ public class LoginController {
     LoginService loginService;
 
     @GetMapping("/userprofile/{email_id}")
-    public ResponseEntity<UserProfile> getDetail(@PathVariable String email_id){
+    public ResponseEntity<UserProfile> getDetail(@PathVariable String email_id) {
         System.out.println(LocalTime.now());
         return loginService.getUserDetail(email_id);
     }
 
     @PostMapping("/check")
-    public String chackAuth(@RequestBody RegistrationModel registrationModel){return loginService.checkAuth(registrationModel)==null ? "Invalid" : "Valid";}
+    public String chackAuth(@RequestBody RegistrationModel registrationModel) {
+        return loginService.checkAuth(registrationModel) == null ? "Invalid" : "Valid";
+    }
 
     @PostMapping("/authentication")
     public ResponseEntity<UserResponse> generateToken(@RequestBody RegistrationModel reg) throws Exception {
-       return loginService.tokenSet(reg); }
+        return loginService.tokenSet(reg);
+    }
 
     @PutMapping("/changepassword/{email_id}")
-    public ResponseEntity<ResponseData> ChangePassword(@PathVariable String email_id, @RequestParam String new_password){ return loginService.changePassword(email_id, new_password); }
+    public ResponseEntity<ResponseData> ChangePassword(@PathVariable String email_id, @RequestParam String new_password) {
+        return loginService.changePassword(email_id, new_password);
+    }
 
     @PutMapping("/updateUser/{id}")
-    public ResponseEntity<ResponseData> updateUser(@PathVariable int id, @RequestBody RegistrationModel registrationModelObject) {return loginService.updateUser(id,registrationModelObject);}
+    public ResponseEntity<ResponseData> updateUser(@PathVariable int id, @RequestBody RegistrationModel registrationModelObject) {
+        return loginService.updateUser(id, registrationModelObject);
+    }
 
     @GetMapping("/userRole")
-    public String getDetailsRoleUser(){return "user";}
+    public String getDetailsRoleUser() {
+        return "user";
+    }
 
     @GetMapping("/vendorRole")
-    public String getDetailsRoleVendor(){return "Vendor";}
+    public String getDetailsRoleVendor() {
+        return "Vendor";
+    }
 
     @GetMapping("/adminRole")
-    public String getDetailsRoleAdmin(){return "admin";}
+    public String getDetailsRoleAdmin() {
+        return "admin";
+    }
 }

@@ -17,26 +17,22 @@ public class AmenitiesController {
     AmenitiesService amenitiesservice;
 
     @GetMapping("/Get")
-    public ResponseEntity<List<AmenitiesModel>> GetAllAmenities()
-    {
+    public ResponseEntity<List<AmenitiesModel>> GetAllAmenities() {
         return amenitiesservice.FindALlAmenities();
     }
 
     @PostMapping("/Add")
-    public ResponseEntity<ResponseResult> SaveAmenities(@RequestBody AmenitiesModel amenitiesModel)
-    {
+    public ResponseEntity<ResponseResult> SaveAmenities(@RequestBody AmenitiesModel amenitiesModel) {
         return amenitiesservice.SaveAmenities(amenitiesModel);
     }
 
     @PutMapping("/Edit/{ID}")
-    public ResponseEntity<ResponseResult> UpdateAmenities(@PathVariable int ID, @RequestBody AmenitiesModel amenitiesModel)
-    {
-        return amenitiesservice.UpdateAmenities(ID,amenitiesModel);
+    public ResponseEntity<ResponseResult> UpdateAmenities(@PathVariable int ID, @RequestBody AmenitiesModel amenitiesModel) {
+        return amenitiesservice.UpdateAmenities(ID, amenitiesModel);
     }
 
     @DeleteMapping("/Delete/{ID}")
-    public ResponseEntity<ResponseResult> DeleteAmenities(@PathVariable int ID)
-    {
+    public ResponseEntity<ResponseResult> DeleteAmenities(@PathVariable int ID) {
         return amenitiesservice.DeleteByIDAmenities(ID);
     }
 

@@ -20,11 +20,9 @@ public class ProfileService {
     @Autowired
     ResponseResult responseResult;
 
-    public ResponseEntity<ProfileModel> getProfile(int userid)
-    {
+    public ResponseEntity<ProfileModel> getProfile(int userid) {
         RegistrationModel registrationModel;
-        if(registrationRepo.findById(userid).isPresent())
-        {
+        if (registrationRepo.findById(userid).isPresent()) {
             registrationModel = registrationRepo.getRegistration(userid);
             profilemodel = new ProfileModel(registrationModel.getRegistration_id(),
                     registrationModel.getFirstname(),
@@ -36,27 +34,13 @@ public class ProfileService {
                     registrationModel.getCityModel().getStateModel().getState_id(),
                     registrationModel.getCityModel().getStateModel().getState_name(),
                     registrationModel.getPincode());
-            responseResult = new ResponseResult(true,false,"Profile");
+            responseResult = new ResponseResult(true, false, "Profile");
             return ResponseEntity.status(HttpStatus.OK).body(profilemodel);
         }
-        responseResult = new ResponseResult(false,true,"No User Profile Found!");
+        responseResult = new ResponseResult(false, true, "No User Profile Found!");
         return ResponseEntity.notFound().build();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //

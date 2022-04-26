@@ -15,22 +15,30 @@ public class JwtUtill {
 
     public static final long JWT_TOKEN_VALIDITY = 1800000;
 
-    public String getUsernameFromToken(String token){ return getClaims(token).getSubject(); }
+    public String getUsernameFromToken(String token) {
+        return getClaims(token).getSubject();
+    }
 
-    public Claims getClaims(String token){
+    public Claims getClaims(String token) {
         return Jwts.parser().
                 setSigningKey(secret).
                 parseClaimsJws(token).
                 getBody();
     }
 
-    public boolean validateToken(String token,String username){ return (username.equals(getUsernameFromToken(token)) && !isexpToken(token)); }
+    public boolean validateToken(String token, String username) {
+        return (username.equals(getUsernameFromToken(token)) && !isexpToken(token));
+    }
 
 
-    public boolean isexpToken(String token){ return expDate(token).before(new Date(System.currentTimeMillis())); }
+    public boolean isexpToken(String token) {
+        return expDate(token).before(new Date(System.currentTimeMillis()));
+    }
 
 
-    public Date expDate(String token){ return getClaims(token).getExpiration(); }
+    public Date expDate(String token) {
+        return getClaims(token).getExpiration();
+    }
 
     public String doGenerateToken(String subject) {
         return Jwts.builder()

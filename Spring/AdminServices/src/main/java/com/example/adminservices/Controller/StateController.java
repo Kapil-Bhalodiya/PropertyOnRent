@@ -17,21 +17,23 @@ public class StateController {
     StateService stateservice;
 
     @PostMapping("/Add")
-    public ResponseEntity<ResponseResult> AddState(@RequestBody StateModel statemodel)
-    {
+    public ResponseEntity<ResponseResult> AddState(@RequestBody StateModel statemodel) {
         return stateservice.SaveState(statemodel);
     }
 
     @GetMapping("/Get")
-    public ResponseEntity<List<StateModel>> GetAllState()
-    {
+    public ResponseEntity<List<StateModel>> GetAllState() {
         return stateservice.FindAllState();
     }
 
     @DeleteMapping("/Delete/{ID}")
-    public ResponseEntity<ResponseResult> DeleteState(@PathVariable int ID) {return stateservice.DeleteByIDState(ID);}
+    public ResponseEntity<ResponseResult> DeleteState(@PathVariable int ID) {
+        return stateservice.DeleteByIDState(ID);
+    }
 
     @PutMapping("/Edit/{ID}")
-    public ResponseEntity<ResponseResult> UpdateState(@PathVariable int ID, @RequestBody StateModel statemodel) { return stateservice.UpdateState(ID,statemodel);}
+    public ResponseEntity<ResponseResult> UpdateState(@PathVariable int ID, @RequestBody StateModel statemodel) {
+        return stateservice.UpdateState(ID, statemodel);
+    }
 
 }

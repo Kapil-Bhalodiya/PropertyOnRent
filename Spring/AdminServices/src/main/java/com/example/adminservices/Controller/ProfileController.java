@@ -17,8 +17,7 @@ public class ProfileController {
     ProfileService profileService;
 
     @GetMapping("/Get/{userid}")
-    public ResponseEntity<ProfileModel> getProfile(@PathVariable int userid)
-    {
+    public ResponseEntity<ProfileModel> getProfile(@PathVariable int userid) {
         return profileService.getProfile(userid);
     }
 }
