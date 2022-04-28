@@ -6,6 +6,7 @@ import com.example.credential.repo.RegistrationRepo;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,7 @@ public class RegistrationService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    @Qualifier("hazelcastInstance")
     @Autowired
     HazelcastInstance instance;
 

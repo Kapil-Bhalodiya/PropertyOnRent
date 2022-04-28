@@ -19,7 +19,7 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @GetMapping("/userprofile/{email_id}")
+    @GetMapping("/profile/{email_id}")
     public ResponseEntity<UserProfile> getDetail(@PathVariable String email_id) {
         System.out.println(LocalTime.now());
         return loginService.getUserDetail(email_id);
@@ -40,7 +40,7 @@ public class LoginController {
         return loginService.changePassword(email_id, new_password);
     }
 
-    @PutMapping("/updateUser/{id}")
+    @PutMapping("/updateuser/{id}")
     public ResponseEntity<ResponseData> updateUser(@PathVariable int id, @RequestBody RegistrationModel registrationModelObject) {
         return loginService.updateUser(id, registrationModelObject);
     }
