@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class Hazelcastconfig {
     @Bean
-    public Config Hconfig(){
+    public Config Hconfig() {
         return new Config().setInstanceName("hazelcast-instance")
                 .addMapConfig(new MapConfig().setName("OTPMap")
-                .setTimeToLiveSeconds(120));
+                        .setTimeToLiveSeconds(120));
     }
 }

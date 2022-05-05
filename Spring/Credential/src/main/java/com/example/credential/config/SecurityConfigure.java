@@ -59,7 +59,7 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").hasRole("User")
                 .antMatchers("/admin/**").hasRole("Admin")
                 .antMatchers("/vendor/**").hasRole("Vendor")
-                .antMatchers("/login/changepassword/**","/login/updateuser/**","/login/profile/**").hasAnyRole("Admin","User","Vendor")
+                .antMatchers("/login/changepassword/**", "/login/updateuser/**", "/login/profile/**").hasAnyRole("Admin", "User", "Vendor")
                 .anyRequest().authenticated().and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); //it's remain same when change state
 

@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "registration_detail")
+@Table(name = "registrationdetail")
 public class RegistrationModel {
 
     @Id
@@ -15,10 +15,10 @@ public class RegistrationModel {
     private int registrationId;
 
     @Column(nullable = false)
-    private String firstName;
+    private String firstname;
 
     @Column(nullable = false)
-    private String lastName;
+    private String lastname;
 
     @Column(nullable = false)
     private String emailId;
@@ -32,10 +32,10 @@ public class RegistrationModel {
     private int pincode;
 
     @ManyToOne
-    @JoinColumn(name = "role_id",nullable = false)
+    @JoinColumn(name = "role_id", nullable = false)
     private RoleModel roleModel;
 
     @ManyToOne
-    @JoinColumn(name = "city_id",referencedColumnName = "cityId",nullable = false)
+    @JoinColumn(name = "city_id", referencedColumnName = "cityId", nullable = false)
     private CityModel cityModel;
 }

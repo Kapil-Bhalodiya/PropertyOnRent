@@ -43,8 +43,8 @@ public class LoginService {
             RegistrationModel registrationModel = registrationRepo.findByEmailId(emailId);
             UserProfile userProfile = new UserProfile();
             userProfile.setEmailId(registrationModel.getEmailId());
-            userProfile.setFirstName(registrationModel.getFirstName());
-            userProfile.setLastName(registrationModel.getLastName());
+            userProfile.setFirstName(registrationModel.getFirstname());
+            userProfile.setLastName(registrationModel.getLastname());
             userProfile.setContactNumber(registrationModel.getContactNumber());
             userProfile.setCityName(registrationModel.getCityModel().getCityName());
             userProfile.setPincode(registrationModel.getPincode());
@@ -85,9 +85,9 @@ public class LoginService {
             registerObj.setCityModel(regBodyObj.getCityModel());
             registerObj.setContactNumber(regBodyObj.getContactNumber());
             registerObj.setEmailId(regBodyObj.getEmailId());
-            registerObj.setFirstName(regBodyObj.getFirstName());
+            registerObj.setFirstname(regBodyObj.getFirstname());
             registerObj.setPassword(passwordEncoder.encode(registerObj.getPassword()));
-            registerObj.setLastName(regBodyObj.getLastName());
+            registerObj.setLastname(regBodyObj.getLastname());
             registerObj.setPincode(regBodyObj.getPincode());
             registrationRepo.save(registerObj);
             return ResponseEntity.ok().body(new ResponseData(true, "Updated..!"));

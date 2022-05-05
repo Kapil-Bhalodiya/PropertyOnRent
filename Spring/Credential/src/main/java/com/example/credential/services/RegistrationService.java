@@ -32,7 +32,9 @@ public class RegistrationService {
 
     RegistrationModel setRegistrationModel;
 
-    private IMap<String,Integer> otpChache() {return instance.getMap("OTPMap");}
+    private IMap<String, Integer> otpChache() {
+        return instance.getMap("OTPMap");
+    }
 
     public Iterable<RegistrationModel> getAllUser() {
         return registrationRepo.findAll();
@@ -41,7 +43,7 @@ public class RegistrationService {
     public ResponseEntity<ResponseData> saveUser(RegistrationModel registrationModel) throws MessagingException, UnsupportedEncodingException {
         RegistrationModel registrationModelObject = registrationRepo.findByEmailId(registrationModel.getEmailId());
         if (registrationModelObject == null) {
-            otpChache().set("OTPCode",generateOTP.sendVerificationEmail(registrationModel.getEmailId(), registrationModel.getFirstName() + " " + registrationModel.getLastName()));
+            otpChache().set("OTPCode", generateOTP.sendVerificationEmail(registrationModel.getEmailId(), registrationModel.getFirstname() + " " + registrationModel.getLastname()));
             setRegistrationModel = registrationModel;
             return ResponseEntity.ok(new ResponseData(true, "OTP sent successfully..!"));
         }
