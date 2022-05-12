@@ -1,0 +1,150 @@
+/* .App {
+  text-align: center;
+} */
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+/* .App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}*/
+/* input:hover {
+  background-color: #22BB22;
+} */
+
+/* .input-control {
+  border-bottom: 2px solid #22BB22;
+}
+
+.button{
+  background-color: #22BB22;
+  color: white;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+ul {
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+header {
+  font-size: 16px;
+  font-family: var(--font-family-body);
+  font-weight: 400;
+  height: 100%;
+  line-height: 30px;
+  vertical-align: baseline;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  color: #686868;
+  background-color: #ffffff;
+}
+a {
+  text-decoration: none;
+}
+.form-control:focus,.form-select:focus,.form-check-input:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #22BB22;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(150, 202, 140, 0.726);
+}
+.form-check-input:checked {
+  background-color: #22BB22;
+  border-color: #22BB22;
+}
+.logo-area a {
+  display: block;
+}
+.header-menu.menu-layout1 {
+  padding: 4px 0px 0px 0px;
+  background: transparent;
+}
+.header-menu {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 100;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.header-menu:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.header-menu nav.template-main-menu > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.header-menu nav.template-main-menu > ul > li > a {
+  transition: all 0.3s ease-out;
+}
+.header-menu nav.template-main-menu > ul > li > a:hover {
+  color: #50ffe4;
+}
+nav.template-main-menu > ul > li {
+  position: relative;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+a:active,
+a:hover,
+a:focus {
+  text-decoration: none;
+}*/
+section {
+  display: flex;
+  justify-content: space-around;
+}
+.logo{
+ padding: 15px;
+}
+.btn{
+  padding: 20px;
+  border-radius: 23px;
+  color: aliceblue;
+  background-color: #00c194;
+}
+.header-end{
+  justify-content: end;
+}
+li {
+  font-weight: 500;
+  padding: 15px 50px 10px 20px; 
+  display: inline-block;
+  text-decoration: none;
+}
+a{
+  text-decoration: none;
+  cursor: pointer;
+  color: aliceblue;
+}
+a:hover{
+  color: #50ffe4;
+}
