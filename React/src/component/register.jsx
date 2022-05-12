@@ -1,89 +1,110 @@
-import React from 'react';
-import pic from '../images/auth.svg';
+import React from 'react'
+import Header from './header'
+import { Button, Form, FormGroup, Label, Input, Row, Container, Col } from 'reactstrap';
+import pic from '../images/aa.svg';
+import { Link } from 'react-router-dom';
 
-function register(props) {
+
+export default function register() {
     return (
         <>
-            <div className='container'>
-                <div className='row col-12'>
-                    <div className='col-6 m-auto'>
-                        <img src={pic} className="img-fluid rounded w-auto" alt='img' />
-                    </div>
-                    <div className='col-6 m-auto mt-5 shadow p-3 mb-5 bg-white rounded'>
-                        <h2 className='mb-3'>Sign Up</h2>
-                        <form className='form'>
-                            <div className='row col-12'>
-                                <div class="col-6">
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" id="user" name="role" className="form-check-input" />
-                                        <label>User</label>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" id="vendor" name="role" className="form-check-input" />
-                                        <label>Vendor</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='row col-12'>
-                                <div class="form-group col-6">
-                                    <input type="text" id="firstName" className="form-control m-2" placeholder="Firstname" />
-                                </div>
-                                <div class="form-group col-6">
-                                    <input type="text" id="lastName" className="form-control m-2" placeholder="Lastname" />
-                                </div>
-                            </div>
-                            <div className='row col-12'>
-                                <div className='form-group'>
-                                    <input type="number" className='form-control m-2' placeholder='Contact Number' />
-                                </div>
-                            </div>
-                            <div className='row col-12'>
-                                <div className='form-group'>
-                                    <input type="email" className='form-control m-2' placeholder='Email id' />
-                                </div>
-                            </div>
-                            <div className='row col-12'>
-                                <div className='form-group'>
-                                    <input type="text" className='form-control m-2' placeholder='Password' />
-                                </div>
-                            </div>
-                            <div className='row col-12'>
-                                <div className='form-group'>
-                                    <input type="text" className='form-control m-2' placeholder='Confirm Password' />
-                                </div>
-                            </div>
-                            <div className='row col-12'>
-                                <div className='form-group col-6'>
-                                    <select class="form-select m-2">
-                                        <option selected>Select State</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </div>
-                                <div className='form-group col-6'>
-                                    <select class="form-select m-2">
-                                        <option selected>Select City</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                <button className='btn btn-success m-3'>Sign Up</button>
-                            </div>
-                            <div className='form-group m-3'>
-                                <a href='/'>Already User?</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            {/* <Header /> */}
+            <section className='section-reg'>
+                <Container>
+                    <Row className='row-reg'>
+                    <Col className='col-6'>
+                        <h2 className='h2 mb-4'><b>Registration</b></h2>
+                        <hr/>
+                            <Form>
+                                <FormGroup tag="fieldset">
+                                    <Row>
+                                        <Col> <Label check>
+                                            <Input type="radio" name="role" />{' '}
+                                            User
+                                        </Label></Col>
+                                        <Col> <Label check>
+                                            <Input type="radio" name="role" />{' '}
+                                            Vendor
+                                        </Label></Col>
+                                    </Row>
+                                </FormGroup>
+                                <FormGroup>
+                                    <Row>
+                                        <Col>
+                                            <Input type="text" id="firstname" placeholder="Firstname" />
+                                        </Col>
+                                        <Col>
+                                            <Input type="text" id="lastname" placeholder="Lastname" />
+
+                                        </Col>
+                                    </Row>
+                                </FormGroup>
+                                <FormGroup>
+                                    <Input type="email" id="email" placeholder="Email id" />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Input type="password" id="password" placeholder="Password" />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Input type="password" id="repassword" placeholder="Confirm Password" />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Row>
+                                        <Col>
+                                            <Input type="select" id="state">
+                                                <option selected>Select State</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </Input>
+                                        </Col>
+                                        <Col>
+                                            <Input type="select" id="city">
+                                                <option selected>Select City</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </Input>
+                                        </Col>
+                                    </Row>
+                                </FormGroup>
+                                {/* <FormGroup>
+                                    <Label for="exampleFile">File</Label>
+                                    <Input type="file" name="file" id="exampleFile" />
+                                    <FormText color="muted">
+                                        This is some placeholder block-level help text for the above input.
+                                        It's a bit lighter and easily wraps to a new line.
+                                    </FormText>
+                                </FormGroup> 
+                                <FormGroup check>
+                                    <Label check>
+                                        <Input type="checkbox" />{' '}
+                                        Check me out
+                                    </Label>
+                                </FormGroup> */}
+                                <Button>Submit</Button>
+                                {/* <FormGroup> */}
+                                <Row className='mt-3'>
+                                    <Col>
+                                        <Link to="/login" className='signinlink'> Already User ? </Link>
+                                    </Col>
+                                </Row>
+
+                                {/* </FormGroup> */}
+                            </Form>
+                        </Col>
+                         <Col className='col-6'>
+                            <img src={pic} className='img-fluid' />
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
+            
         </>
+
     )
 }
-
-export default register
