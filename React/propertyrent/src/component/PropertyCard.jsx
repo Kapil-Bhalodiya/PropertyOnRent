@@ -10,8 +10,7 @@ export default function PropertyCard() {
         fetch('http://localhost:8080/')
         .then((res) => res.json())
         .then((res) => {
-          console.log(res)
-          setProprty(res)
+            setProprty(res)
         })
     }
     useEffect(() => {
@@ -27,33 +26,33 @@ export default function PropertyCard() {
                     </div>
                 </Row>
                 <Row>
-                    {Property.map((item) => {
-                        console.log(item);
-                    <Col>
-                        <Card style={{ width: '28rem' }}>
+                {Property.map((item,i) => (
+                    <Col className='card-head'>
+                        <Card className='card-main'>
                             <CardImg
                                 alt="Card image cap"
                                 src={about3}
                                 width="100%" />
                             <CardBody style={{ padding: 20 }}>
                                 <CardTitle tag="h3">
-                                    {item.property_name}
+                                    {console.log(i)}
+                                    <p key={i}>{item.property_name}</p>
                                 </CardTitle>
                                 <CardSubtitle style={{ padding: '10px 10px 10px 0px' }}
                                     className="mb-2 text-muted"
                                     tag="h6">
-                                    <i class="fa fa-map-marker"></i> Surat
+                                    <i className="fa fa-map-marker"></i> Surat
                                 </CardSubtitle>
                                 <CardText>
                                     <ul style={{ display: 'flex', justifyContent: 'space-between', padding: '0' }}>
-                                        <li><i class="fa fa-bed"></i> Beds: 03</li>
-                                        <li style={{ float: 'right' }}><i class="fa fa-bath"></i> Baths: 02</li>
+                                        <li><i className="fa fa-bed"></i> Beds: 03</li>
+                                        <li style={{ float: 'right' }}><i className="fa fa-bath"></i> Baths: 02</li>
                                     </ul>
                                 </CardText>
                             </CardBody>
                         </Card>
                     </Col>
-                    })}
+                ))}
                 </Row>
             </Container>
         </>
