@@ -1,0 +1,15 @@
+{
+  "name": "testcrud",
+  "version": "1.0.0",
+  "description": "create api and implimet with react js",
+  "main": "property.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mysql": "^2.18.1"
+  }
+}

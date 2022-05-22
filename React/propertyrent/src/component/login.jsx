@@ -7,7 +7,6 @@ import pic from '../images/auth.svg';
 export default function login() {
   return (
     <>
-      <Header />
       <section className='section-reg'>
         <Container>
           <Row className='row-reg'>
