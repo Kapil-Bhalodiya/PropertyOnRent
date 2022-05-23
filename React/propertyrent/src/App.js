@@ -1,10 +1,11 @@
 import './App.css';
-import Register from './component/register';
-import Login from './component/login';
-import About from './component/about';
-import Header from './component/header';
-import Contact from './component/contact';
-import Index from './component/index';
+import Register from './component/home/Register';
+import Login from './component/home/Login';
+import About from './component/about/About';
+import Header from './component/Header';
+import Contact from './component/contact/Contact';
+import Index from './component/home/Index';
+import Property from './component/property/Property';
 import {
   BrowserRouter as Router,
   Route,
@@ -24,6 +25,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
+          <Route path='/property' element={<Property />} />
         </Routes>
       </Router>
     </>

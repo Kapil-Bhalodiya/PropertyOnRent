@@ -29,6 +29,7 @@ function Header() {
                         <Navbar expand="md">
                             <NavbarBrand>
                                 <img src={logo} className="img-fluid" />
+                                {/* <h2>RentOut</h2> */}
                             </NavbarBrand>
                             <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
                             <Collapse isOpen={isOpen} navbar>
@@ -37,7 +38,7 @@ function Header() {
                                         <NavLink tag={Link} to="/" activaClassName="active">Home</NavLink>
                                     </NavItem>
                                     <NavItem>
-                                        <NavLink tag={Link} to="/contact" activaClassName="active">Property</NavLink>
+                                        <NavLink tag={Link} to="/property" activaClassName="active">Property</NavLink>
                                     </NavItem>
                                     <NavItem>
                                         <NavLink tag={Link} to="/about" activaClassName="active">About</NavLink>
@@ -50,12 +51,12 @@ function Header() {
                             <Col className="action-list">
                                 <ul>
                                     <li class="listing-button">
-                                        <a href="post-add.html" class="listing-btn">
+                                        <Link to="/login" className="listing-btn">
                                             <span className="fa-icon">
-                                                <i class="fa fa-user"></i>
+                                                <i className="fa fa-user"></i>
                                             </span>
                                             <span className="item-text">Sign In</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </Col>
