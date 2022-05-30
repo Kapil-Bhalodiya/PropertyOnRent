@@ -5,12 +5,14 @@ import About from './component/about/About';
 import Header from './component/Header';
 import Contact from './component/contact/Contact';
 import Index from './component/home/Index';
-import Property from './component/property/Property';
+import Property from './component/property/AllProperty';
 import {
   BrowserRouter as Router,
   Route,
   Routes
 } from 'react-router-dom';
+import Footer from './component/Footer';
+import ListProperty from './component/property/ListProperty';
 
 
 
@@ -26,7 +28,9 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/property' element={<Property />} />
+          <Route path='/detailproperty' element={<ListProperty />} />
         </Routes>
+      <Footer/>
       </Router>
     </>
   );

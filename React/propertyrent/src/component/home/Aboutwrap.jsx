@@ -13,8 +13,8 @@ export default function aboutwrap() {
             <section class="about-wrap-3">
                 <Container>
                     <Row>
-                        <Col className='about-box5 wow fadeInUp'>
-                            <Row className="item-heading-left mb-bottom">
+                        <Col className='about-box5'>
+                            <Row className="item-heading-left">
                                 <span class="section-subtitle">Let’s Take a Tour</span>
                                 <h2 class="section-title">Helping People to Find The  Right Property</h2>
                             </Row>

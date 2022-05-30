@@ -22,7 +22,7 @@ export default function PropertyCard() {
                 <Row>
                     <div className="item-heading-left">
                         <span className="section-subtitle">Our PROPERTIES</span>
-                        <h2 className="section-title">Latest Properties</h2>
+                        <h2 className="section-title">Populer Properties</h2>
                     </div>
                 </Row>
                 <Row>

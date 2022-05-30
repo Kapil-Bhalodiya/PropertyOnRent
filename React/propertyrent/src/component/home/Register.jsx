@@ -3,7 +3,6 @@ import { Button, Form, FormGroup, Label, Input, Row, Container, Col } from 'reac
 import pic from '../../images/authentication/aa.svg';
 import { Link } from 'react-router-dom';
 
-
 export default function register() {
     return (
         <>
@@ -84,7 +83,6 @@ export default function register() {
                     </Row>
                 </Container>
             </section>
-            
         </>
 
     )

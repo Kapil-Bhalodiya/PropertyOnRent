@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Banner from '../../images/index/slider4.jpg';
 import Aboutwrap from './Aboutwrap';
 import PropertyCard from './PropertyCard';
+import Footer from '../Footer';
 
 export default function index() {
     return (
@@ -11,34 +12,34 @@ export default function index() {
                 <Container>
                     <Row>
                         <div className="main-banner-box1  main-banner-box5">
-                            <h1 class="item-title wow fadeInUp" data-wow-delay=".4s">Let's find the perfect place</h1>
-                            <ul class="list-inline">
+                            <h1 className="item-title">Let's find the perfect place</h1>
+                            <ul className="list-inline">
                                 <li>
-                                    <label for="apartments" class="active">
-                                        <i class="fa fa-building active"></i>
+                                    <label for="apartments">
+                                        <i class="fa fa-building"></i>
                                         <span>Farm</span>
-                                        <input checked="" type="radio" name="rtcl_category" id="apartments" value="apartments"/>
+                                        <input type="radio" name="rtcl_category" id="apartments" value="apartments"/>
                                     </label>
                                 </li>
                                 <li>
                                     <label for="home">
                                         <i class="fa fa-home"></i>
                                         <span>Home</span>
-                                        <input checked="" type="radio" name="rtcl_category" id="home" value="home"/>
+                                        <input type="radio" name="rtcl_category" id="home" value="home" />
                                     </label>
                                 </li>
                                 <li>
                                     <label for="office">
                                         <i class="fa fa-briefcase"></i>
                                         <span>Office</span>
-                                        <input checked="" type="radio" name="rtcl_category" id="office" value="office"/>
+                                        <input type="radio" name="rtcl_category" id="office" value="office" />
                                     </label>
                                 </li>
                                 <li>
                                     <label for="shop">
                                         <i class="fa fa-shopping-basket"></i>
                                         <span>Shop</span>
-                                        <input checked="" type="radio" name="rtcl_category" id="shop" value="shop"/>
+                                        <input type="radio" name="rtcl_category" id="shop" value="shop" />
                                     </label>
                                 </li>
                             </ul>
@@ -84,7 +85,7 @@ export default function index() {
                                     </Row>
                                 </div>
                             </div>
-                            <p class="item-para wow fadeInUp" data-wow-delay=".4s">We’ve more than <span
+                            <p class="item-para">We’ve more than <span
                                 class="banner-p">54,000</span> apartments, place & plot.
                             </p>
                         </div>

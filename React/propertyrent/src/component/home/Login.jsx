@@ -12,7 +12,6 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-
   const handleChange = (e) =>{
     setState(prevState=>({
       ...prevState,
